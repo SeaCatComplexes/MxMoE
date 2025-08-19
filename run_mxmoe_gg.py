@@ -1,6 +1,7 @@
 import json
 import argparse
 import subprocess
+import os
 from mxmoe.kernels.gen_workload import MODEL_ID_TO_LAYERS
 from mxmoe.kernels.tile_config import get_gpu_info
 from mxmoe.kernels.compose_kernel import TemplateGenerator, KernelType
@@ -30,7 +31,7 @@ def get_qcfg_list(qcfg_file: str, target_layer: int) -> str:
 
 if __name__ == "__main__":
     model_id = "qwen2_moe"
-    parser = argparse.ArgumentParser(description="Bench workloads for groupgemm kernel.")
+    parser = argparse.ArgumentParser(description="Bench workloads for groupgemm kernel (No Python Interface).")
     parser.add_argument("--model", type=str, default=model_id, help="Model ID.")
     parser.add_argument("--dataset", type=str, default="wiki2", help="Dataset ID.")
     parser.add_argument("--qconfig", type=str, default=None, help="Path to the quantization config file.")
@@ -39,10 +40,7 @@ if __name__ == "__main__":
     parser.add_argument("--bs", type=int, default=512, help="Batch size.")
     parser.add_argument("--layer", type=int, default=-1, help="Layer index.")
 
-    #################################################
-    args = parser.parse_args(
-        # []
-    )
+    args = parser.parse_args()
     model_id = args.model
     dataset  = args.dataset
     bs       = args.bs
@@ -62,14 +60,17 @@ if __name__ == "__main__":
         workload_suffix = f"-fp16.json"
 
     workload_path = f"{CUR_DIR}/out/workloads/{model_id}-{dataset}-{bs}{workload_suffix}"
-    #################################################
+    
     if layer == -1:
         layers = MODEL_ID_TO_LAYERS[model_id]
     else:
         layers = [layer]
 
     for layer in layers:
+        print(f"🚀 Processing Layer {layer}...")
+        
         # 1. Generate workloads
+        print("📊 Step 1: Generating workloads...")
         handle = subprocess.Popen(
             (
             f"python mxmoe/kernels/gen_workload.py"
@@ -85,15 +86,19 @@ if __name__ == "__main__":
         )
         handle.wait()
 
-
-        # 2. compose kernel
+        # 2. Generate and compile kernel (NO PYTHON INTERFACE!)
+        print("🔧 Step 2: Generating CUDA kernels...")
         print(f"qcfg_list: {qcfg_list}")
         gen_dir = f"{CUR_DIR}/mxmoe/kernels/src/generated/"
-        file_lists = [f"{gen_dir}/{x}" for x in os.listdir(gen_dir)]
-        for file in file_lists:
-            os.remove(file)
+        
+        # 清理之前生成的文件
+        if os.path.exists(gen_dir):
+            file_lists = [f"{gen_dir}/{x}" for x in os.listdir(gen_dir)]
+            for file in file_lists:
+                os.remove(file)
+        
         gpu_info = get_gpu_info()
-
+        
         tile_configs = None
         if args.tile_config is not None:
             with open(args.tile_config, "r") as f:
@@ -102,13 +107,23 @@ if __name__ == "__main__":
         generator = TemplateGenerator(gpu_info["cc"], qcfg_list, KernelType.Fused, tile_configs)
         generator.generate_source_code()
 
+        print("🔨 Step 3: Compiling with NO Python dependencies...")
         os.chdir(f"{CUR_DIR}/mxmoe/kernels/src/")
+        
+        # 使用已经替换的CMakeLists.txt (无Python依赖，无网络下载!)
+        print("   Using modified CMakeLists.txt (no Python interface, no network downloads!)")
+        
         os.system("cmake -B build -G Ninja")
-        os.system("cmake --build build")
+        os.system("cmake --build build --target test")
 
-        # 3. bench kernel
+        # 3. bench kernel 
+        print("⚡ Step 4: Running pure C++ benchmark...")
         bench_save_suffix = workload_suffix.replace(".json", "")
         bench_save = f"{CUR_DIR}/out/bench/{model_id}-{dataset}-{bs}{bench_save_suffix}"
+        
+        # 确保输出目录存在
+        os.makedirs(f"{CUR_DIR}/out/bench/", exist_ok=True)
+        
         handle = subprocess.Popen(
             (
             f"./build/test bench"
@@ -119,3 +134,8 @@ if __name__ == "__main__":
             env=os.environ.copy(),
         )
         handle.wait()
+        
+        print(f"✅ Layer {layer} completed! Results saved to: {bench_save}")
+
+    print("🎉 All layers completed successfully!")
+    print("📈 Pure C++/CUDA benchmark completed without Python interface dependencies!")

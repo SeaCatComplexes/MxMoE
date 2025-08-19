@@ -53,7 +53,7 @@ We explore the automated design of mixed-precision quantization scheme for MoE m
 
     ```bash
     # e.g. sample data from humaneval-x to observe qwen2_moe (in fact qwen1.5moe)
-    CUDA_VISIBLE_DEVICES=0 python -m mxmoe.quant.moe_tracer --model qwen2_moe --trace_gate --dataset humaneval-x
+    CUDA_VISIBLE_DEVICES=6 python -m mxmoe.quant.moe_tracer --model qwen2_moe --trace_gate --dataset humaneval-x
     ```
 
 3. Calibration
@@ -61,7 +61,7 @@ We explore the automated design of mixed-precision quantization scheme for MoE m
     1. Get the quant loss of each linear-blocks of `<MOE_MODEL>` (e.g. `qwen2_moe`) under certain `<QUANTIZATION_CONFIG>` (e.g. `w4a4_g-1_sym`):
 
         ```bash
-        CUDA_VISIBLE_DEVICES=0 python -m mxmoe.quant.quant calib --model qwen2_moe --method rtn --metric layer_out_norm --qcfg w4a4_g-1_sym
+        CUDA_VISIBLE_DEVICES=6 python -m mxmoe.quant.quant calib --model qwen2_moe --method rtn --metric layer_out_norm --qcfg w8a8_g-1_sym
         ```
     2. Solve the ILP based on the quant loss and kernel profile. Quantization scheme will be saved in `qconfigs`
 
@@ -69,12 +69,12 @@ We explore the automated design of mixed-precision quantization scheme for MoE m
         # e.g. re-produce mxmoe w5a5
         python -m mxmoe.quant.bits_solver --model qwen2_moe --qtype gptq-had --wbits 5.0 --solve_mode layer --batch 8192 --filter_list w4a4_g-1_sym w8a8_g-1_sym
         ```
-
+    
 4. Accuracy Eval. You can re-produce the exp in paper by setting corresponding tasks and quantization configs.
 
     ```bash
     # e.g. evaluate the performance of qwen1.5_moe under RTN w4a4_g-1_sym quantization config
-    CUDA_VISIBLE_DEVICES=2 python -m mxmoe.quant.quant eval --model qwen2_moe --method rtn-had --qstr w4a4_g-1_sym --tasks ppl
+    CUDA_VISIBLE_DEVICES=6 python -m mxmoe.quant.quant eval --model qwen2_moe --method rtn-had --qstr w4a4_g-1_sym --tasks ppl
     ```
 
 5. Performance (Computational Efficiency) Eval. After we get the mixed-precision scheme (Step 3), we can automatially generate corresponding GroupGEMM kernel.
@@ -83,10 +83,11 @@ We explore the automated design of mixed-precision quantization scheme for MoE m
 
     ```bash
     # e.g. test groupgemm in the layer-11 of qwen2_moe model (FP16):
+    PYTHONPATH=/home/teai/gwf_file/MxMoE:$PYTHONPATH
     python run_mxmoe_gg.py --model qwen2_moe --bs 8192 --layer 11
-
+    
     # e.g. test groupgemm in the layer-11 of qwen2_moe model under mixed-precision
-    python run_mxmoe_gg.py --model qwen2_moe --bs 8192 --layer 11 --qconfig <QCONFIG> --tile_config <TCONFIG>
+    python run_mxmoe_gg.py --model qwen2_moe --bs 8192 --layer 11 --qconfig /home/teai/gwf_file/MxMoE/qconfigs/w4a4_g-1_sym+w8a8_g-1_sym/qwen2_moe_rtn_Slayer_bs8192_wbits5.0_r0.0.json --tile_config /home/teai/gwf_file/MxMoE/qconfigs/w4a4_g-1_sym+w8a8_g-1_sym/qwen2_moe_rtn_Slayer_bs8192_wbits5.0_r0.0_tile_cfg.json
     ```
 
 ## 👀 Limitations

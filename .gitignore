@@ -24,3 +24,5 @@ log/*
 calib/*
 calib_bkp/*
 qconfigs/*
+models/
+datasets/

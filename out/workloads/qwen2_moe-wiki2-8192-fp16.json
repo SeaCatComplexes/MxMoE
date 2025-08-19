@@ -1,0 +1,739 @@
+{
+  "num_tokens": 8192,
+  "layer-10": {
+    "gate_up": [{
+      "shape": [690, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [486, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [584, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [788, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [420, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [590, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [536, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [676, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [566, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [476, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [614, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [724, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [524, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [610, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [532, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [310, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [530, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [810, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [448, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [410, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [546, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [572, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [408, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [450, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [574, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [420, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [534, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [562, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [638, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [502, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [550, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [590, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [576, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [564, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [550, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [510, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [612, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [604, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [494, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [702, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [400, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [602, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [480, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [472, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [506, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [458, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [600, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [616, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [540, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [534, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [386, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [656, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [552, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [574, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [474, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [606, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [572, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [334, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [546, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [572, 2816, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [8192, 11264.0, 2048],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }],
+    "down": [{
+      "shape": [690, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [486, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [584, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [788, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [420, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [590, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [536, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [676, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [566, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [476, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [614, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [724, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [524, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [610, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [532, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [310, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [530, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [810, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [448, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [410, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [546, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [572, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [408, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [450, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [574, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [420, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [534, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [562, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [638, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [502, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [550, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [590, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [576, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [564, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [550, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [510, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [612, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [604, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [494, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [702, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [400, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [602, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [480, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [472, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [506, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [458, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [600, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [616, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [540, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [534, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [386, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [656, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [552, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [574, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [474, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [606, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [572, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [334, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [546, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [572, 2048, 1408],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }, {
+      "shape": [8192, 2048, 5632.0],
+      "w_bits": 16,
+      "a_bits": 16,
+      "gsize": -1,
+      "sym": true
+    }]
+  }
+}

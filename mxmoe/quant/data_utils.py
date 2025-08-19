@@ -30,7 +30,15 @@ def get_wikitext2(nsamples, seed, seqlen, tokenizer:PreTrainedTokenizer, model_i
 
     testenc_cache = ID2CACHE["test"][model_id]
     if not os.path.exists(testenc_cache):
-        testdata = load_dataset('wikitext', 'wikitext-2-raw-v1', split='test')
+        # Try to use local dataset first
+        local_wikitext_path = "/home/teai/gwf_file/MxMoE/datasets/wikitext"
+        if os.path.exists(local_wikitext_path):
+            print(f"Using local WikiText dataset: {local_wikitext_path}")
+            testdata = load_dataset(local_wikitext_path, 'wikitext-2-raw-v1', split='test')
+        else:
+            print("Local WikiText dataset not found, using online download...")
+            testdata = load_dataset('wikitext', 'wikitext-2-raw-v1', split='test')
+        
         testenc = tokenizer("\n\n".join(testdata['text']), return_tensors='pt')["input_ids"]
         os.makedirs(os.path.dirname(testenc_cache), exist_ok=True)
         with open(testenc_cache, "wb") as f:
@@ -45,7 +53,15 @@ def get_wikitext2(nsamples, seed, seqlen, tokenizer:PreTrainedTokenizer, model_i
 
     trainenc_cache = ID2CACHE["train"][model_id]
     if not os.path.exists(trainenc_cache):
-        traindata = load_dataset('wikitext', 'wikitext-2-raw-v1', split='train')
+        # Try to use local dataset first
+        local_wikitext_path = "/home/teai/gwf_file/MxMoE/datasets/wikitext"
+        if os.path.exists(local_wikitext_path):
+            print(f"Using local WikiText dataset: {local_wikitext_path}")
+            traindata = load_dataset(local_wikitext_path, 'wikitext-2-raw-v1', split='train')
+        else:
+            print("Local WikiText dataset not found, using online download...")
+            traindata = load_dataset('wikitext', 'wikitext-2-raw-v1', split='train')
+        
         trainenc = tokenizer("\n\n".join(traindata['text']), return_tensors='pt')
         os.makedirs(os.path.dirname(trainenc_cache), exist_ok=True)
         with open(trainenc_cache, "wb") as f:
@@ -82,11 +98,31 @@ def get_humaneval_x(nsamples, seed, seqlen, tokenizer:PreTrainedTokenizer, model
     trainenc_cache = ID2CACHE["train"][model_id]
     if not os.path.exists(trainenc_cache):
         prompts = []
-        for code_type in ["python", "js", "cpp", "java", "go"]:
-            data = load_dataset(f"THUDM/humaneval-x", code_type)
-            prompts.extend(data["test"]["prompt"])
+        
+        # Try to use local dataset first
+        local_dataset_path = "/home/teai/gwf_file/MxMoE/datasets/humaneval-x"
+        if os.path.exists(local_dataset_path):
+            print(f"Using local HumanEval-X dataset: {local_dataset_path}")
+            for code_type in ["python", "js", "cpp", "java", "go"]:
+                try:
+                    data = load_dataset(local_dataset_path, code_type, trust_remote_code=True)
+                    prompts.extend(data["test"]["prompt"])
+                    print(f"Loaded {code_type} data with {len(data['test']['prompt'])} samples")
+                except Exception as e:
+                    print(f"Error loading {code_type} data: {e}")
+        else:
+            # Fallback to online download
+            print("Local dataset not found, trying online download...")
+            for code_type in ["python", "js", "cpp", "java", "go"]:
+                data = load_dataset(f"THUDM/humaneval-x", code_type, trust_remote_code=True)
+                prompts.extend(data["test"]["prompt"])
 
-        trainenc = tokenizer("\n\n".join(prompts), return_tensors='pt')
+        # Join prompts with separators and truncate if necessary
+        combined_text = "\n\n".join(prompts)
+        print(f"Combined text length: {len(combined_text)} characters")
+        
+        # Tokenize and handle long sequences
+        trainenc = tokenizer(combined_text, return_tensors='pt', truncation=True, max_length=32768)
 
         os.makedirs(os.path.dirname(trainenc_cache), exist_ok=True)
         with open(trainenc_cache, "wb") as f:

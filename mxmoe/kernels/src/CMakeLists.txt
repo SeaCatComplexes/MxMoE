@@ -31,9 +31,8 @@ include_directories(
 
 set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH};${cccl_dir}/lib/cmake/cccl")
 
-
 #################################################################
-# Targets
+# Pure C++/CUDA Targets (No Python!)
 #################################################################
 
 set(GENERATED_DIR "${CMAKE_SOURCE_DIR}/generated")
@@ -60,41 +59,6 @@ target_link_libraries(test
   gen_lib
 )
 
-# Extension
-# python
-set(Python3_ROOT_DIR "${CONDA_PREFIX}")
-find_package(Python REQUIRED COMPONENTS Development Interpreter)
-set(DEV_MODULE Development.Module)
-
-# set(Python3_ROOT_DIR "${CONDA_PREFIX}")
-# find_package(Python3 REQUIRED COMPONENTS Development Interpreter)
-# if(Python3_FOUND)
-#     message(STATUS "Python3 include dirs: ${Python3_INCLUDE_DIRS}")
-#     message(STATUS "Python3 libraries: ${Python3_LIBRARIES}")
-# endif()
-
-# torch
-execute_process(
-  COMMAND python -c "import torch;print(torch.utils.cmake_prefix_path)"
-  OUTPUT_STRIP_TRAILING_WHITESPACE OUTPUT_VARIABLE torch_cmake_path)
-list(APPEND CMAKE_PREFIX_PATH ${torch_cmake_path})
-find_package(Torch REQUIRED)
-find_library(TORCH_PYTHON_LIBRARY torch_python PATH "${TORCH_INSTALL_PREFIX}/lib")
-
-# pybind11
-add_subdirectory(${CMAKE_SOURCE_DIR}/3rdparty/pybind11 pybind11)
-
-pybind11_add_module(mxmoe_ops ref_bind.cu)
-target_compile_options(mxmoe_ops PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:-Xcompiler -rdynamic -lineinfo --use_fast_math>) 
-target_link_libraries(mxmoe_ops PRIVATE ${TORCH_LIBRARIES} ${TORCH_PYTHON_LIBRARY} fmt::fmt Python::Python)
-target_include_directories(mxmoe_ops PRIVATE 
-    ${TORCH_INCLUDE_DIRS}
-    ${Python3_INCLUDE_DIRS}
-)
-
-#################################################################
-# 3rdparty
-#################################################################
 # fmt
 set(BUILD_SHARED_LIBS ON)
 add_subdirectory(3rdparty/fmt)
@@ -102,15 +66,8 @@ add_subdirectory(3rdparty/fmt)
 # CCCL
 find_package(CCCL REQUIRED CONFIG COMPONENTS Thrust CUB)
 
-# json
-include(FetchContent)
-set(FETCHCONTENT_QUIET OFF)
-FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz)
-FetchContent_MakeAvailable(json)
+add_subdirectory(3rdparty/json)
 
-# argparse
-FetchContent_Declare(
-    argparse
-    GIT_REPOSITORY https://github.com/p-ranav/argparse.git
-)
-FetchContent_MakeAvailable(argparse)
+add_subdirectory(3rdparty/argparse)
+
+

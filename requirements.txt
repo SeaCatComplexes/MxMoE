@@ -83,7 +83,6 @@ psutil==7.0.0
 ptyprocess==0.7.0
 pure_eval==0.2.3
 pyarrow==20.0.0
-pycuda==2025.1
 Pygments==2.19.1
 pynvml==11.5.3
 pyparsing==3.2.3
